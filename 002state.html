@@ -26,14 +26,14 @@
 				}
 				//生命周期
 				componentDidMount(){
-					
+					setInterval(this.tick.bind(this),1000);
 				}
 				render(){
-					return()
+					return <h1>{this.state.time.toLocaleTimeString()}</h1>;
 				}
 			}
 			ReactDOM.render(
-				
+			<Clock/>,
 			document.getElementById('root') );
 		</script>
 	</body>
