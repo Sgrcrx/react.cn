@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<script src="../js/react.development.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/react-dom.development.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/browser.js" type="text/javascript" charset="utf-8"></script>
+		</style>
+	</head>
+
+	<body>
+		<!--
+			LogInButton
+			LogoutButton
+			handleClick
+		-->
+		
+		<div id="root"></div>
+		<script type="text/babel">
+			
+			function LogInButton(props){
+				return <button onClick={props.onClick}>登录</button>
+			};
+			function LogoutButton(props){
+				return <button onClick={props.onClick}>退出</button>
+			};
+			class LoginControl extends React.Component{
+				constructor(props){
+					super(props);
+					this.state = {};
+				}
+				
+				handleClick(e){
+					console.log(e);
+				}
+				
+				render(){
+					var button = null;
+					if(this.props.login){
+						button = <LogoutButton onClick={this.handleClick.bind(this)} />
+					}else{
+						button = <LogInButton onClick={this.handleClick.bind(this)}/>
+					}
+					
+					return (<div>{button}</div>);
+				}
+			}
+			
+			
+			ReactDOM.render(
+				<LoginControl login={true} />,
+				document.getElementById('root') );
+		</script>
+	</body>
+
+</html>

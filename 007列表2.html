@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<script src="js/react.development.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/react-dom.development.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/browser.js" type="text/javascript" charset="utf-8"></script>
+		<style type="text/css">
+		</style>
+	</head>
+
+	<body>
+		<!--<input type="text" name="todos" id="todos" value=""/><label for="todos"></label>-->
+		
+		
+		<div id="root"></div>
+		<script type="text/babel">
+			
+			class ToDoList extends React.Component{
+				constructor(props){
+					super(props);
+					this.state = {todos:[{
+						time:'12:00',
+						event:"吃午饭"
+					},{
+						time:'13:30',
+						event:"上课"
+					},{
+						time:'15:00',
+						event:"休息一刻"
+					},{
+						time:'15:15',
+						event:"上课"
+					},{
+						time:'17:00',
+						event:"下课"
+					}]};
+				}
+				
+				deleteItem(index){
+					let todos = this.state.todos;
+					todos.splice(index,1);
+					this.setState({todos:todos});
+				}
+//				
+//				add(index){
+//					let todos = this.state.todos;
+//					
+//				}
+//				
+				
+				render(){
+					
+					return (
+						<ul>{
+							<label for="todos">
+							<input type="text" name="todos" id="todos" /></label>}
+							{this.state.todos.map((item,index)=><li onClick={this.deleteItem.bind(this,index)} key={index}>{item.time}-{item.event}</li>)}
+						</ul>
+					)
+				}
+			}
+			
+			
+			ReactDOM.render(
+				<ToDoList />,
+				document.getElementById('root') );
+		</script>
+	</body>
+
+</html>
